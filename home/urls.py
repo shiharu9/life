@@ -7,4 +7,5 @@ urlpatterns = [
     path('childhood/', childhood),
     path('youth/', youth),
     path('oldness/', oldness),
+    path('add_event', add_event)
 ]

@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from django.contrib import staticfiles
 
 from .models import Event
+from .forms import EventForm
 # Create your views here.
 
 
@@ -22,3 +24,13 @@ def youth(request):
 def oldness(request):
     data = Event.objects.filter(period__name='Старость')
     return render(request, 'home/oldness.html', {'data': data})
+
+
+def add_event(request):
+    if request.method == 'POST':
+        form = EventForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+    return render(request, 'home/add_event.html', {'form': EventForm()})
+
