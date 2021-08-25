@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <style>
+
+        {% block background %}
+        .back{
+          position: fixed;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background:url(https://memepedia.ru/wp-content/uploads/2016/03/hide-the-pain-harold.jpg) no-repeat top center #efeff1;
+          background-size:cover;
+        }
+        {% endblock %}
+
+
+        .thx{
+          width: 100%;
+          top:150px;
+          left: 50px;
+          position:relative;
+          display:inline-block;
+        }
+
+        nav{
+          width: 100%;
+          position: fixed;
+          top:50px;
+          text-align:center;
+        }
+        nav a{
+          font-family: 'Oswald', sans-serif;
+          font-weight:500;
+          text-transform:uppercase;
+          text-decoration:none;
+          color: #000000;
+          margin:0 15px;
+          font-size:25px;
+          letter-spacing:1px;
+          position:relative;
+          display:inline-block;
+        }
+        nav a:before{
+          content:'';
+          position: absolute;
+          width: 100%;
+          height: 3px;
+          background:#16151b;
+          top:47%;
+          animation:out 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+        }
+        nav a:hover:before{
+          animation:in 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+
+        }
+        @keyframes in{
+          0%{
+            width: 0;
+            left:0;
+            right:auto;
+          }
+          100%{
+            left:0;
+            right:auto;
+            width: 100%;
+          }
+        }
+        @keyframes out{
+          0%{
+            width:100%;
+            left: auto;
+            right: 0;
+          }
+          100%{
+            width: 0;
+            left: auto;
+            right: 0;
+          }
+        }
+        @keyframes show{
+          0%{
+            opacity:0;
+            transform:translateY(-10px);
+          }
+          100%{
+            opacity:1;
+            transform:translateY(0);
+          }
+}
+
+    </style>
+</head>
+<body>
+
+<div class="back"></div>
+<nav>
+  <a href="/">Главная</a>
+  <a href="/childhood">Детство</a>
+  <a href="/youth">Молодость</a>
+  <a href="/oldness">Старость</a>
+</nav>
+
+
+    {% block content %}
+        {% for new in data %}
+            <h2 class="thx">{{ new.title }}</h2>
+            <p class="th">{{ new.content }}</p>
+            <br>
+        {% endfor %}
+    {% endblock %}
+
+
+</body>
+</html>

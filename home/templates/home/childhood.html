@@ -1,0 +1,10 @@
+{% extends "home/common.html" %}
+
+{% block content %}
+    {% for new in data %}
+
+        <h2 class="thx" style="font-size:35px">{{ new.title }}</h2>
+        <p class="thx" style="font-size:25px">{{ new.content }}</p>
+        <br>
+    {% endfor %}
+{% endblock %}
